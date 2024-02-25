@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { Delete, Edit } from '@element-plus/icons-vue'
 import ChannelSelect from './components/ChannelSelect.vue'
 import ArticleEdit from './components/ArticleEdit.vue'
-import { artGetListService, artDelService } from '@/api/article.js'
+import { artGetListService, artDelChannelService } from '@/api/article.js'
 import { formatTime } from '@/utils/format.js'
 const articleList = ref([]) // 文章列表
 const total = ref(0) // 总条数
@@ -78,7 +78,7 @@ const onDeleteArticle = async (row) => {
     cancelButtonText: '取消',
     type: 'warning'
   })
-  await artDelService(row.id)
+  await artDelChannelService(row.id)
   ElMessage.success('删除成功')
   // 重新渲染列表
   getArticleList()
